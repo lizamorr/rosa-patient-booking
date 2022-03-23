@@ -1,0 +1,129 @@
+.calendar {
+  border-top: 1px solid #efeceb;
+  padding-bottom: 24px;
+  width: 100%;
+  font-size: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 16px;
+  box-sizing: border-box;
+  &__header-container {
+    display: flex;
+    height: 55px;
+    flex-direction: column;
+    justify-content: center;
+    color: #5a4d49;
+  }
+  &__header-day {
+    color: #9c727d;
+    font-size: 9px;
+    line-height: 11px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &__show-more {
+    border: none;
+    border-top: 1px solid #efeceb !important;
+    background: inherit;
+    padding-top: 8px;
+    margin-top: 8px;
+    color: #7f5bc2;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    td,
+    th {
+      border-color: inherit;
+      border-style: solid;
+      border-width: 0;
+    }
+    thead {
+      display: table-header-group;
+      vertical-align: middle;
+      .arrow-icon__container {
+        text-align: center;
+        width: 65px;
+        font-size: 12px;
+        color: #5a4d49;
+        .arrow-icon {
+          cursor: pointer;
+          position: relative;
+          padding: 0;
+          box-sizing: border-box;
+          margin: auto;
+          align-items: center;
+          justify-content: center;
+        }
+        .disabled {
+          cursor: default;
+          color: #cac3c5;
+        }
+      }
+    }
+    tr {
+      display: table-row;
+      vertical-align: inherit;
+    }
+    th {
+      border-bottom: 1px solid #efeceb;
+      width: 65px;
+      text-align: -webkit-match-parent;
+      display: table-cell;
+      vertical-align: inherit;
+      font-weight: bold;
+    }
+    .calendar__body--outlined {
+      cursor: help;
+      outline: 2px solid #7f5bc2;
+    }
+    tbody {
+      display: table-row-group;
+      vertical-align: middle;
+      td {
+        width: 65px;
+        display: table-cell;
+        vertical-align: inherit;
+        .calendar__body-cell {
+          background: #efeceb;
+          cursor: pointer;
+          border: 1px solid transparent;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 4px;
+          color: #371c69;
+          height: 32px;
+          border-radius: 4px;
+        }
+        .selected {
+          background-color: #643dae !important;
+          color: #ffffff;
+        }
+        .unselected,
+        .appointment {
+          background-color: #f3effb;
+          cursor: pointer;
+        }
+        .no-appointment {
+          background-color: #fff;
+        }
+        .empty-line {
+          height: 1px;
+          width: 16px;
+          background: #bd969e;
+        }
+      }
+    }
+  }
+}
