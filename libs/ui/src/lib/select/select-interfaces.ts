@@ -4,7 +4,7 @@ export interface ISelect {
   options: ISelectOptions[];
 }
 
-interface ISelectOptions {
+export interface ISelectOptions {
   value: string;
   label: string;
   meetingDuration: number;

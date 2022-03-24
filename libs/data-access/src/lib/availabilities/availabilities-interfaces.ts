@@ -21,7 +21,7 @@ export interface IAvailabilities {
   _id: string;
 }
 
-export interface AvailabilitiesRequest {
+export interface IAvailabilitiesRequest {
   from: Date;
   to: Date;
   motive_id: string;

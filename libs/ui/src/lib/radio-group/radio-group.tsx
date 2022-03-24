@@ -1,20 +1,12 @@
 import React from 'react';
+import { IRadioInput } from './radio-group-interfaces';
 import './radio-group.scss';
 
 interface RadioGroupProps {
-  radioInput: RadioGroupInput[];
+  radioInput: IRadioInput[];
   radioLabel: string;
   radioAnswer: string;
   onRadioChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-export interface RadioGroupInput {
-  type: string;
-  name: string;
-  value: string;
-  id?: string;
-  label: string;
-  placeholder?: string;
-  required?: boolean;
 }
 
 export function RadioGroup(props: RadioGroupProps) {

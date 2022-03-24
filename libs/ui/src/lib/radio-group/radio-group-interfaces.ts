@@ -3,10 +3,11 @@ export interface IRadio {
   input: IRadioInput[];
 }
 
-interface IRadioInput {
+export interface IRadioInput {
   type: string;
   label: string;
   value: string;
   name: string;
   id: string;
+  required: boolean;
 }

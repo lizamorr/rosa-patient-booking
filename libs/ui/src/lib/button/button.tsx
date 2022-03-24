@@ -10,7 +10,7 @@ interface ButtonProps {
 export const Button = (props: ButtonProps) => {
   const { buttonText, hasRightArrow, onClick } = props;
   return (
-    <div className="button-container">
+    <div className="button__container">
       <button onClick={onClick} type="submit">
         {buttonText && buttonText}
         {hasRightArrow && (

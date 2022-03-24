@@ -3,7 +3,7 @@ import './app.scss';
 import {
   getAvailabilities,
   IAvailabilities,
-  AvailabilitiesRequest,
+  IAvailabilitiesRequest,
 } from '@rosa-patient-booking/data-access';
 import {
   Button,
@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     if (!isEmpty(selectedOption) && !isEmpty(isNewPatient)) {
-      let availabilitiesParams: AvailabilitiesRequest = {
+      let availabilitiesParams: IAvailabilitiesRequest = {
         from: startDate,
         to: endDate,
         motive_id: selectedOption,
