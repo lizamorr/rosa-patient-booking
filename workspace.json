@@ -1,7 +1,9 @@
 {
   "version": 2,
   "projects": {
+    "data-access": "libs/data-access",
     "patient-booking": "apps/patient-booking",
-    "patient-booking-e2e": "apps/patient-booking-e2e"
+    "patient-booking-e2e": "apps/patient-booking-e2e",
+    "ui": "libs/ui"
   }
 }

@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  justify-content: center;
+  .card__container {
+    margin: 2em 0 2em 0;
+    position: relative;
+    display: block;
+    background: #ffffff;
+    border: 1px solid #eae1e3;
+    box-sizing: border-box;
+    box-shadow: 0 12px 41px #54354207, 0 2.68036px 9.15789px #5435420b,
+      0 0.798012px 2.72654px #54354212;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    .card__header {
+      padding: 32px 32px 0 32px;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.button-container {
+  width: inherit;
+  position: inherit;
+  background: inherit;
+  padding: 16px 32px;
+  bottom: inherit;
+  left: inherit;
+  button {
+    border-radius: 4px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer !important;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #814a58;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    .arrow-right {
+      margin-left: 8px;
+      order: 1;
+    }
+  }
+}
