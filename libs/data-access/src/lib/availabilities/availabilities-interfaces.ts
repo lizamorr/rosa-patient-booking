@@ -1,4 +1,4 @@
-export interface Availabilities {
+export interface IAvailabilities {
   appointmentSlotId: string;
   calendarId: string;
   createdAt: Date;

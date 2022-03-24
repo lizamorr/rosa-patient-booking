@@ -1,16 +1,16 @@
 import { isEmpty } from 'lodash';
 import {
-  Appointments,
-  Availabilities,
-  CalendarRange,
+  IAppointments,
+  IAvailabilities,
+  ICalendarRange,
 } from './calendar-interfaces';
 
 export const createAppointments = (
-  calendarRange: CalendarRange[],
-  availabilities: Availabilities[],
+  calendarRange: ICalendarRange[],
+  availabilities: IAvailabilities[],
   meetingDuration: number
 ) => {
-  let appointments: Appointments[] = [];
+  let appointments: IAppointments[] = [];
   calendarRange.forEach((date) => {
     availabilities.forEach((availability) => {
       const { duration } = availability;
@@ -63,7 +63,7 @@ export const setAppointmentHour = (day: string, baseHour: string) => {
 };
 
 export const getNumOfRows = (
-  appointments: Appointments[],
+  appointments: IAppointments[],
   showMoreRows?: boolean
 ) => {
   let rows: number[] = [0, 1, 2, 3];
@@ -78,7 +78,7 @@ export const getNumOfRows = (
   return rows;
 };
 
-export const getMaxNumOfRows = (appointments: Appointments[]) => {
+export const getMaxNumOfRows = (appointments: IAppointments[]) => {
   let maxRows: number = 4;
   const dailyAppts: number[] = [];
   appointments.forEach((appt) => dailyAppts.push(appt.meetings.length));
@@ -89,12 +89,15 @@ export const getMaxNumOfRows = (appointments: Appointments[]) => {
 
 export const getDateRange = (startDate: Date, endDate: Date) => {
   const dates = [];
-  while (startDate <= endDate) {
+  const newStartDate = new Date(startDate);
+  const newEndDate = new Date(endDate);
+  while (newStartDate <= newEndDate) {
     dates.push({
-      month: startDate.toLocaleString('en-us', { month: 'short' }),
-      day: startDate.toLocaleString('en-us', { weekday: 'short' }),
-      number: startDate.getDate(),
+      month: newStartDate.toLocaleString('en-us', { month: 'short' }),
+      day: newStartDate.toLocaleString('en-us', { weekday: 'short' }),
+      number: newStartDate.getDate(),
     });
+    newStartDate.setDate(newStartDate.getDate() + 1);
   }
 
   return dates;

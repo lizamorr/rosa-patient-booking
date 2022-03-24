@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './app.scss';
 import {
   getAvailabilities,
-  Availabilities,
+  IAvailabilities,
   AvailabilitiesRequest,
 } from '@rosa-patient-booking/data-access';
 import {
@@ -16,7 +16,7 @@ import { isEmpty } from 'lodash';
 import { button, card, radio, select, url } from './app-data';
 
 const App = () => {
-  const [availabilities, setAvailabilities] = useState<Availabilities[]>([]);
+  const [availabilities, setAvailabilities] = useState<IAvailabilities[]>([]);
   const [isNewPatient, setIsNewPatient] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [appointmentDate, setAppointmentDate] = useState<any>();
@@ -58,7 +58,7 @@ const App = () => {
   ): void => {
     setSelectedOption(e.target.value);
     const appointmentType = select.options.find(
-      (meeting) => meeting.value == e.target.value
+      (meeting: any) => meeting.value == e.target.value
     );
     setMeetingDuration(appointmentType ? appointmentType.meetingDuration : 0);
   };

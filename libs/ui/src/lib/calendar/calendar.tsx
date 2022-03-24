@@ -9,21 +9,21 @@ import {
   getNumOfRows,
 } from './calendar-utils';
 import {
-  Appointments,
-  Availabilities,
-  CalendarRange,
+  IAppointments,
+  IAvailabilities,
+  ICalendarRange,
 } from './calendar-interfaces';
 
 interface CalendarProps {
-  availabilities: Availabilities[];
+  availabilities: IAvailabilities[];
   meetingDuration: number;
   selectedOption: string;
-  appointmentDate: Appointments;
+  appointmentDate: IAppointments;
   hasRequiredError: boolean;
   onSetStartDate: (startDate: Date) => void;
   onSetEndDate: (endDate: Date) => void;
   onSetHasRequiredError: (hasError: boolean) => void;
-  onSetAppointmentDate: (appointmentDate: Appointments) => void;
+  onSetAppointmentDate: (appointmentDate: IAppointments) => void;
 }
 
 export function Calendar(props: CalendarProps) {
@@ -31,9 +31,9 @@ export function Calendar(props: CalendarProps) {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [rows, setRows] = useState<number[]>([]);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const [appointments, setAppointments] = useState<Appointments[]>([]);
+  const [appointments, setAppointments] = useState<IAppointments[]>([]);
   const [startDate, setStartDate] = useState<Date>(new Date());
-  const [calendarRange, setCalendarRange] = useState<CalendarRange[]>([]);
+  const [calendarRange, setCalendarRange] = useState<ICalendarRange[]>([]);
   const [endDate, setEndDate] = useState<Date>(
     new Date(
       new Date().getFullYear(),
@@ -44,11 +44,16 @@ export function Calendar(props: CalendarProps) {
 
   useEffect(() => {
     const getAppointments = () => {
-      const appointments: Appointments[] = createAppointments(
-        calendarRange,
-        availabilities,
-        props.meetingDuration
-      );
+      let appointments: IAppointments[] = [];
+      try {
+        appointments = createAppointments(
+          calendarRange,
+          availabilities,
+          props.meetingDuration
+        );
+      } catch (error) {
+        console.log(error);
+      }
       setAppointments(appointments);
       setRows(getNumOfRows(appointments));
       setShowMore(getMaxNumOfRows(appointments) > 3);
@@ -112,7 +117,7 @@ export function Calendar(props: CalendarProps) {
       props.onSetHasRequiredError(false);
     }
 
-    let updatedAppointments: Appointments[] = appointments;
+    let updatedAppointments: IAppointments[] = appointments;
     let updatedAppointmentDate = appointmentDate;
     let apptIndex = 0;
     appointments?.forEach((appointment, index) => {

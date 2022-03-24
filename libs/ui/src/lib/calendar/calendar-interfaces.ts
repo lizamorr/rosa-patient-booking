@@ -1,15 +1,15 @@
-export interface Appointments {
+export interface IAppointments {
   day: string;
   meetings: { day: string; time: string; selected: boolean }[];
 }
 
-export interface CalendarRange {
+export interface ICalendarRange {
   month: string;
   day: string;
   number: number;
 }
 
-export interface Availabilities {
+export interface IAvailabilities {
   appointmentSlotId: string;
   calendarId: string;
   createdAt: Date;

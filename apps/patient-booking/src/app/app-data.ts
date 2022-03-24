@@ -1,6 +1,9 @@
+import { IRadio, ISelect, ICard, IButton } from '@rosa-patient-booking/ui';
+import { IMeetingOptions } from './app-interfaces';
+
 export const url: string = 'https://staging-api.rosa.be/api/availabilities';
 export const header: string = 'Find availability';
-export const radio = {
+export const radio: IRadio = {
   label: 'Is this your first appointment with this practitioner?',
   input: [
     {
@@ -19,7 +22,7 @@ export const radio = {
     },
   ],
 };
-export const select = {
+export const select: ISelect = {
   selectLabel: 'What is the reason for your visit?',
   placeholder: 'Select a motive',
   options: [
@@ -40,7 +43,7 @@ export const select = {
     },
   ],
 };
-export const meetingOptions = [
+export const meetingOptions: IMeetingOptions[] = [
   {
     value: '61eea367ddf6c500149ae2cc',
     label: 'Cultural fit',
@@ -57,9 +60,8 @@ export const meetingOptions = [
     meetingDuration: 30,
   },
 ];
-export const button = {
+export const button: IButton = {
   buttonText: 'Book Appointment',
-
   hasRightArrow: true,
 };
-export const card = { header: 'Find availability' };
+export const card: ICard = { header: 'Find availability' };
