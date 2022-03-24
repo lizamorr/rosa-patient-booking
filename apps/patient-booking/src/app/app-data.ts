@@ -12,6 +12,7 @@ export const radio: IRadio = {
       value: 'yes',
       name: 'patientStatus',
       id: 'input-radio__yes',
+      required: true,
     },
     {
       type: 'radio',
@@ -19,6 +20,7 @@ export const radio: IRadio = {
       value: 'no',
       name: 'patientStatus',
       id: 'input-radio__no',
+      required: true,
     },
   ],
 };
