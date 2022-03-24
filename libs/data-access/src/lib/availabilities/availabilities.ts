@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { IAvailabilities } from './availabilities-interfaces';
 
 export const getAvailabilities = async (
   url: string,
@@ -10,7 +11,7 @@ export const getAvailabilities = async (
     calendar_ids: string;
     state: string;
   }
-) => {
+): Promise<IAvailabilities[]> => {
   const { data } = await axios.get(url, { params });
   return data;
 };

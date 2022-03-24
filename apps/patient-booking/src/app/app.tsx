@@ -51,7 +51,7 @@ const App = () => {
 
       fetchAvailabilties().catch((error) => alert(error));
     }
-  }, [selectedOption, isNewPatient]);
+  }, [selectedOption, isNewPatient, startDate, endDate]);
 
   const handleSelectionChange = (
     e: React.ChangeEvent<HTMLSelectElement>

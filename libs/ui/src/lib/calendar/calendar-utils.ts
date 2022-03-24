@@ -9,7 +9,7 @@ export const createAppointments = (
   calendarRange: ICalendarRange[],
   availabilities: IAvailabilities[],
   meetingDuration: number
-) => {
+): IAppointments[] => {
   let appointments: IAppointments[] = [];
   calendarRange.forEach((date) => {
     availabilities.forEach((availability) => {
@@ -27,7 +27,7 @@ export const createAppointments = (
         baseHour = startHour;
 
         for (let index = 0; index < numOfMeetings; index++) {
-          hour = addMinutes(
+          hour = getDateWithMinutes(
             setAppointmentHour(date.day, baseHour),
             index === 0 ? 60 : meetingDuration
           );
@@ -54,18 +54,18 @@ export const createAppointments = (
   return appointments;
 };
 
-export const addMinutes = (date: Date, minutes: number) => {
+const getDateWithMinutes = (date: Date, minutes: number): string => {
   return new Date(date.getTime() + minutes * 60000).toLocaleTimeString();
 };
 
-export const setAppointmentHour = (day: string, baseHour: string) => {
+const setAppointmentHour = (day: string, baseHour: string): Date => {
   return new Date(`${day} ${new Date().getUTCFullYear()} ${baseHour}`);
 };
 
 export const getNumOfRows = (
   appointments: IAppointments[],
   showMoreRows?: boolean
-) => {
+): number[] => {
   let rows: number[] = [0, 1, 2, 3];
 
   if (!isEmpty(appointments)) {
@@ -78,7 +78,7 @@ export const getNumOfRows = (
   return rows;
 };
 
-export const getMaxNumOfRows = (appointments: IAppointments[]) => {
+export const getMaxNumOfRows = (appointments: IAppointments[]): number => {
   let maxRows: number = 4;
   const dailyAppts: number[] = [];
   appointments.forEach((appt) => dailyAppts.push(appt.meetings.length));
@@ -87,11 +87,15 @@ export const getMaxNumOfRows = (appointments: IAppointments[]) => {
   return maxRows;
 };
 
-export const getDateRange = (startDate: Date, endDate: Date) => {
+export const getDateRange = (
+  startDate: Date,
+  endDate: Date
+): ICalendarRange[] => {
   const dates = [];
   const newStartDate = new Date(startDate);
   const newEndDate = new Date(endDate);
-  while (newStartDate <= newEndDate) {
+
+  while (newStartDate < newEndDate) {
     dates.push({
       month: newStartDate.toLocaleString('en-us', { month: 'short' }),
       day: newStartDate.toLocaleString('en-us', { weekday: 'short' }),

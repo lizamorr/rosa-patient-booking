@@ -62,14 +62,14 @@ export function Calendar(props: CalendarProps) {
     getAppointments();
   }, [availabilities]);
 
-  const handleShowMore = () => {
+  const handleShowMore = (): void => {
     if (getNumOfRows(appointments).length != getMaxNumOfRows(appointments)) {
       setRows(getNumOfRows(appointments, true));
       setShowMore(false);
     }
   };
 
-  const handleNextDate = () => {
+  const handleNextDate = (): void => {
     const newStartDate = new Date(endDate);
     newStartDate.setDate(newStartDate.getDate());
     const newEndDate = new Date(newStartDate);
@@ -78,7 +78,7 @@ export function Calendar(props: CalendarProps) {
     updateCalendarState(newStartDate, newEndDate, true);
   };
 
-  const handlePreviousDate = () => {
+  const handlePreviousDate = (): void => {
     const newStartDate = new Date(startDate);
     newStartDate.setDate(newStartDate.getDate() - 6);
     const newEndDate = new Date(startDate);
@@ -91,7 +91,7 @@ export function Calendar(props: CalendarProps) {
     newStartDate: Date,
     newEndDate: Date,
     isNext: boolean
-  ) => {
+  ): void => {
     props.onSetStartDate(newStartDate);
     props.onSetEndDate(newEndDate);
     setStartDate(newStartDate);
@@ -102,7 +102,7 @@ export function Calendar(props: CalendarProps) {
 
   const handleAppointmentSelection = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  ): void => {
     const selectedDate = event.currentTarget.id;
     const selectedTime = event.currentTarget.textContent;
     const { appointmentDate, onSetAppointmentDate } = props;
@@ -120,6 +120,7 @@ export function Calendar(props: CalendarProps) {
     let updatedAppointments: IAppointments[] = appointments;
     let updatedAppointmentDate = appointmentDate;
     let apptIndex = 0;
+
     appointments?.forEach((appointment, index) => {
       apptIndex = appointment.meetings.findIndex(
         (meeting) => meeting.time === selectedTime
