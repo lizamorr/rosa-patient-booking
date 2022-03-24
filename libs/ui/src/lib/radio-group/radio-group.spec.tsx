@@ -14,6 +14,7 @@ describe('RadioGroup', () => {
         value: 'yes',
         name: 'patientStatus',
         id: 'input-radio__yes',
+        required: true,
       },
       {
         type: 'radio',
@@ -21,9 +22,11 @@ describe('RadioGroup', () => {
         value: 'no',
         name: 'patientStatus',
         id: 'input-radio__no',
+        required: true,
       },
     ],
   };
+
   it('should match snapshot', () => {
     const component = render(<RadioGroup {...radioProps} />);
     expect(component).toMatchSnapshot();

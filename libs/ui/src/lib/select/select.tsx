@@ -1,16 +1,13 @@
 import React from 'react';
+import { ISelectOptions } from './select-interfaces';
 import './select.scss';
 
 interface SelectProps {
   selectLabel: string;
   selectedOption: string;
-  options: SelectOptions[];
+  options: ISelectOptions[];
   placeholder: string;
   onSelectionChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}
-interface SelectOptions {
-  value: string;
-  label: string;
 }
 
 export function Select(props: SelectProps) {
@@ -21,6 +18,7 @@ export function Select(props: SelectProps) {
     placeholder,
     onSelectionChange,
   } = props;
+
   return (
     <div className="select">
       {selectLabel && <span className="select__label">{selectLabel}</span>}
