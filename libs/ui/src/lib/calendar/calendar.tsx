@@ -52,7 +52,7 @@ export function Calendar(props: CalendarProps) {
           props.meetingDuration
         );
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
       setAppointments(appointments);
       setRows(getNumOfRows(appointments));
